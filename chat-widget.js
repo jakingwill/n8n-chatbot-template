@@ -278,6 +278,11 @@
   fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
   document.head.appendChild(fontLink);
 
+    // Inject styles
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+    
   // Default configuration
   const defaultConfig = {
     webhook: {

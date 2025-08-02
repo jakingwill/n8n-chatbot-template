@@ -2,7 +2,7 @@
   // Load font
   const fontLink = document.createElement('link');
   fontLink.rel = 'stylesheet';
-  fontLink.href = 'https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Geist+Sans:wght@100..900&display=swap';
   document.head.appendChild(fontLink);
 
   // Default configuration

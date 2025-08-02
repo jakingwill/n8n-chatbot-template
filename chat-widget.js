@@ -502,4 +502,4 @@
             chatContainer.classList.remove('open');
         });
     });
-})();
+})();```

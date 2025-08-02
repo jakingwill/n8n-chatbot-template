@@ -2,7 +2,7 @@
   // Load font
   const fontLink = document.createElement('link');
   fontLink.rel = 'stylesheet';
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Geist+Sans:wght@100..900&display=swap';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
   document.head.appendChild(fontLink);
 
   // Default configuration

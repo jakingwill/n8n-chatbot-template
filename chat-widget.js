@@ -437,7 +437,9 @@
             route: config.webhook.route,
             chatInput: message,
             metadata: {
-                userId: ""
+                submission_id: variables['c0c6a1f8-a317-41a1-aa15-7626508c76a8']?.['id'],
+                assessment_name: variables['c0c6a1f8-a317-41a1-aa15-7626508c76a8']?.['assessment_name_ai'],
+                student_name: variables['c0c6a1f8-a317-41a1-aa15-7626508c76a8']?.['student_name_ai']
             }
         };
 

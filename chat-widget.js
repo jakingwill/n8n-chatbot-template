@@ -289,7 +289,7 @@ function initN8NChatWidget() {
         webhook: { url: '', route: '' },
         branding: {
             logo: '', name: '', welcomeText: '', responseTimeText: '',
-            poweredBy: { text: 'Powered by Mad', link: 'https://n8n.partnerlinks.io/m8a94i19zhqq?utm_source=nocodecreative.io' }
+            poweredBy: { text: 'Got feedback to improve the assistant?', link: 'https://get.marking.ai/settings?source=aichatwidget' }
         },
         metadata: {},
         style: { primaryColor: '#854fff', secondaryColor: '#6b3fd4', position: 'right', backgroundColor: '#ffffff', fontColor: '#333333' }
@@ -353,7 +353,7 @@ function initN8NChatWidget() {
         <div class="chat-interface">
             <div class="chat-messages"></div>
             <div class="chat-input">
-                <textarea placeholder="Type your message here..." rows="1"></textarea>
+                <textarea placeholder="Type your message here..." rows="3"></textarea>
                 <button type="submit">Send</button>
             </div>
             <div class="chat-footer">

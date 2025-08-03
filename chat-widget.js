@@ -1,5 +1,5 @@
 // Chat Widget Script - FULLY CORRECTED VERSION
-(function() {
+function initN8NChatWidget() {
     // Create and inject styles
     const styles = `
         .n8n-chat-widget {
@@ -462,4 +462,4 @@
     chatContainer.querySelectorAll('.close-button').forEach(button => {
         button.addEventListener('click', () => { chatContainer.classList.remove('open'); });
     });
-})();
+}

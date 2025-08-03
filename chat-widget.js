@@ -327,12 +327,16 @@ function initN8NChatWidget() {
     const chatContainer = document.createElement('div');
     chatContainer.className = `chat-container${config.style.position === 'left' ? ' position-left' : ''}`;
     
-    const newConversationHTML = `
+    // 1. A single, persistent header
+    const headerHTML = `
         <div class="brand-header">
             <img src="${config.branding.logo}" alt="${config.branding.name}">
             <span>${config.branding.name}</span>
             <button class="close-button">×</button>
-        </div>
+        </div>`;
+
+    // 2. The initial "welcome" view (NO header inside)
+    const newConversationHTML = `
         <div class="new-conversation">
             <h2 class="welcome-text">${config.branding.welcomeText}</h2>
             <button class="new-chat-btn">
@@ -344,13 +348,9 @@ function initN8NChatWidget() {
             <p class="response-text">${config.branding.responseTimeText}</p>
         </div>`;
 
+    // 3. The active chat interface (NO header inside)
     const chatInterfaceHTML = `
         <div class="chat-interface">
-            <div class="brand-header">
-                <img src="${config.branding.logo}" alt="${config.branding.name}">
-                <span>${config.branding.name}</span>
-                <button class="close-button">×</button>
-            </div>
             <div class="chat-messages"></div>
             <div class="chat-input">
                 <textarea placeholder="Type your message here..." rows="1"></textarea>
@@ -361,7 +361,8 @@ function initN8NChatWidget() {
             </div>
         </div>`;
     
-    chatContainer.innerHTML = newConversationHTML + chatInterfaceHTML;
+    // Combine them in the correct order
+    chatContainer.innerHTML = headerHTML + newConversationHTML + chatInterfaceHTML;
     
     const toggleButton = document.createElement('button');
     toggleButton.className = `chat-toggle${config.style.position === 'left' ? ' position-left' : ''}`;

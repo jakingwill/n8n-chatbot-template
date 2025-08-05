@@ -283,7 +283,7 @@ textarea.addEventListener('keydown', e => {
 });
 
 /* launcher */
-toggleButton.addEventListener('click', () => {
+toggle.addEventListener('click', () => {
   chatContainer.classList.toggle('open');
 });
 

@@ -39,7 +39,7 @@ const styles = `
     background:var(--chat--color-background);border-radius:12px;
     box-shadow:0 8px 32px rgba(0,0,0,.12);
     border:1px solid rgba(0,0,0,.06);
-    overflow:hidden;display:flex;flex-direction:column;
+    overflow:hidden;flex-direction:column;
   }
   .n8n-chat-widget .chat-container.position-left{right:auto;left:20px}
   .n8n-chat-widget .chat-container.open{display:flex}

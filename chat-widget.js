@@ -84,7 +84,17 @@ const styles = `
 
   /* Input */
   .n8n-chat-widget .chat-input{display:flex;gap:8px;padding:16px;border-top:1px solid rgba(0,0,0,.06)}
-  .n8n-chat-widget .chat-input textarea{flex:1;padding:12px;border:1px solid rgba(0,0,0,.12);border-radius:8px;resize:none;font-size:14px}
+  .n8n-chat-widget .chat-input textarea {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid rgba(133, 79, 255, 0.2);
+            border-radius: 8px;
+            background: var(--chat--color-background);
+            color: var(--chat--color-font);
+            resize: none;
+            font-family: inherit;
+            font-size: 14px;
+        }
   .n8n-chat-widget .chat-input button{padding:0 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;transition:transform .2s}
   .n8n-chat-widget .chat-input button:hover{transform:scale(1.05)}
 
@@ -92,6 +102,27 @@ const styles = `
   .n8n-chat-widget .chat-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:30px;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center;transition:transform .3s}
   .n8n-chat-widget .chat-toggle.position-left{right:auto;left:20px}
   .n8n-chat-widget .chat-toggle:hover{transform:scale(1.05)}
+
+   /* Footer */
+  .n8n-chat-widget .chat-footer {
+            padding: 8px;
+            text-align: center;
+            background: var(--chat--color-background);
+            border-top: 1px solid rgba(133, 79, 255, 0.1);
+        }
+
+        .n8n-chat-widget .chat-footer a {
+            color: var(--chat--color-primary);
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            font-family: inherit;
+        }
+
+        .n8n-chat-widget .chat-footer a:hover {
+            opacity: 1;
+        }
 
   /* Wide screens */
   @media (min-width:700px){.n8n-chat-widget .chat-container{max-width:380px}}

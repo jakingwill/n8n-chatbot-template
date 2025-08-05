@@ -272,26 +272,31 @@ async function sendMsg(){
 }
 
 /* ---------- 9.  EVENTS ---------- */
-newChatBtn.onclick=startConversation;
-sendBtn.onclick=sendMsg;
-textarea.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});
+newChatBtn.onclick = startConversation;
+sendBtn.onclick    = sendMsg;
 
+textarea.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMsg();
+  }
+});
+
+/* launcher (use toggleButton if that’s the variable you created) */
 toggleButton.addEventListener('click', () => {
-        chatContainer.classList.toggle('open');
-    });
+  chatContainer.classList.toggle('open');
+});
 
-    // Add close button handlers
-    const closeButtons = chatContainer.querySelectorAll('.close-button');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            chatContainer.classList.remove('open');
-        });
-
-toggle.onclick=()=>chatContainer.classList.toggle('open');
-closeBtn.onclick=()=>chatContainer.classList.remove('open');
+/* close buttons (all elements with class .close-button) */
+chatContainer.querySelectorAll('.close-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    chatContainer.classList.remove('open');
+  });
+});
 
 /* ---------- 10.  AUTO OPEN? ---------- */
-if(cfg.behavior.autoOpen){chatContainer.classList.add('open');}
+if (cfg.behavior.autoOpen) {
+  chatContainer.classList.add('open');
 }
 
 /* Auto-init after DOM ready */

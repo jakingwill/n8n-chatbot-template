@@ -276,6 +276,17 @@ newChatBtn.onclick=startConversation;
 sendBtn.onclick=sendMsg;
 textarea.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});
 
+toggleButton.addEventListener('click', () => {
+        chatContainer.classList.toggle('open');
+    });
+
+    // Add close button handlers
+    const closeButtons = chatContainer.querySelectorAll('.close-button');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            chatContainer.classList.remove('open');
+        });
+
 toggle.onclick=()=>chatContainer.classList.toggle('open');
 closeBtn.onclick=()=>chatContainer.classList.remove('open');
 

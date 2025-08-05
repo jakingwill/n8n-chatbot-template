@@ -285,7 +285,9 @@ textarea.addEventListener('keydown', e => {
 /* launcher */
 toggle.addEventListener('click', () => {
   chatContainer.classList.toggle('open');
-});
+});   // ✅ closes addEventListener
+
+/* ‼️  REMOVE the next stray }); here */
 
 /* close buttons */
 chatContainer.querySelectorAll('.close-button').forEach(btn => {
@@ -300,8 +302,7 @@ if (cfg.behavior.autoOpen) {
 }
 
 /* ---------- END OF initN8NChatWidget ---------- */
-}   // ← this closes the function!
-/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+}   // ← closes function properly
 
 /* Auto-init after DOM ready */
 if (document.readyState === 'loading') {
@@ -313,3 +314,4 @@ if (document.readyState === 'loading') {
 /* Expose global */
 if (typeof window !== 'undefined') {
   window.initN8NChatWidget = initN8NChatWidget;
+}

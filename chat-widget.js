@@ -97,15 +97,19 @@ const styles = `
 
   /* ——— NEW / OVERRIDES ——— */
   /* welcome screen */
-  .n8n-chat-widget .welcome-text{
-    margin:0 0 20px 0;
-    font-size:20px;line-height:1.3;font-weight:600;
-    color:var(--chat--color-font);
-  }
-  .n8n-chat-widget .response-text{
-    margin:4px 0 0 0;
-    font-size:14px;line-height:1.4;opacity:.7;
-  }
+  .n8n-chat-widget .new-conversation .welcome-text{
+  margin:0 0 20px 0;
+  font-size:20px;
+  line-height:1.3;
+  font-weight:600;
+  color:var(--chat--color-font);
+}
+.n8n-chat-widget .new-conversation .response-text{
+  margin:4px 0 0 0;
+  font-size:14px;
+  line-height:1.4;
+  opacity:.7;
+}
 
   /* cap width on very wide viewports */
   @media (min-width:700px){

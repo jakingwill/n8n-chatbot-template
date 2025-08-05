@@ -14,57 +14,104 @@
 /* 1 .  Widget initialiser (keeps all your styling & logic) */
 function initN8NChatWidget () {
   /* ---------- 1.  STYLES  ---------- */
-  const styles = `
-    .n8n-chat-widget{
-      --chat--color-primary:var(--n8n-chat-primary-color,#854fff);
-      --chat--color-secondary:var(--n8n-chat-secondary-color,#6b3fd4);
-      --chat--color-background:var(--n8n-chat-background-color,#ffffff);
-      --chat--color-font:var(--n8n-chat-font-color,#333333);
-      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
-    }
-    /* ▼ container + layout fixes (1.1) */
-    .n8n-chat-widget .chat-container{
-      position:fixed;bottom:20px;right:20px;z-index:1000;
-      width:380px;height:600px;display:none;
-      background:var(--chat--color-background);border-radius:12px;
-      box-shadow:0 8px 32px rgba(133,79,255,.15);
-      border:1px solid rgba(133,79,255,.2);overflow:hidden;
-      display:flex;flex-direction:column;
-    }
-    .n8n-chat-widget .chat-container.position-left{right:auto;left:20px}
-    .n8n-chat-widget .chat-container.open{display:flex}
-    /* ▼ centred header (1.2) */
-    .n8n-chat-widget .brand-header{position:relative;height:56px;border-bottom:1px solid rgba(133,79,255,.1);}
-    .n8n-chat-widget .brand-title{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      display:flex;align-items:center;gap:10px;
-    }
-    .n8n-chat-widget .brand-title img{width:28px;height:28px}
-    .n8n-chat-widget .brand-title span{font-size:18px;font-weight:500;color:var(--chat--color-font)}
-    .n8n-chat-widget .close-button{
-      position:absolute;right:16px;top:50%;transform:translateY(-50%);
-      background:none;border:none;font-size:22px;opacity:.6;cursor:pointer;
-    }
-    .n8n-chat-widget .close-button:hover{opacity:1}
-    /* ▼ flex layout so input bar never slides away (1.1) */
-    .n8n-chat-widget .chat-interface{display:none;flex-direction:column;flex:1;min-height:0}
-    .n8n-chat-widget .chat-interface.active{display:flex}
-    .n8n-chat-widget .chat-messages{flex:1;min-height:0;overflow-y:auto;padding:20px;display:flex;flex-direction:column;background:var(--chat--color-background)}
-    /* messages */
-    .n8n-chat-widget .chat-message{padding:12px 16px;margin:8px 0;border-radius:12px;max-width:80%;font-size:14px;line-height:1.5;word-wrap:break-word}
-    .n8n-chat-widget .chat-message.user{align-self:flex-end;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;box-shadow:0 4px 12px rgba(133,79,255,.2)}
-    .n8n-chat-widget .chat-message.bot{align-self:flex-start;background:var(--chat--color-background);border:1px solid rgba(133,79,255,.2);color:var(--chat--color-font);box-shadow:0 4px 12px rgba(0,0,0,.05)}
-    /* Thinking... bubble (1.4) */
-    .n8n-chat-widget .chat-message.loading{opacity:.6;font-style:italic;animation:blink 1.4s infinite}
-    @keyframes blink{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}
-    .n8n-chat-widget .chat-input{display:flex;gap:8px;padding:16px;border-top:1px solid rgba(133,79,255,.1);background:var(--chat--color-background)}
-    .n8n-chat-widget .chat-input textarea{flex:1;padding:12px;border:1px solid rgba(133,79,255,.2);border-radius:8px;background:var(--chat--color-background);font-size:14px;color:var(--chat--color-font);resize:none}
-    .n8n-chat-widget .chat-input button{padding:0 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;transition:transform .2s}
-    .n8n-chat-widget .chat-input button:hover{transform:scale(1.05)}
-    /* toggle button */
-    .n8n-chat-widget .chat-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:30px;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(133,79,255,.3);z-index:999;display:flex;align-items:center;justify-content:center;transition:transform .3s}
-    .n8n-chat-widget .chat-toggle:hover{transform:scale(1.05)}
-  `;
+const styles = `
+  /* ——— Root widget shell ——— */
+  .n8n-chat-widget{
+    --chat--color-primary:var(--n8n-chat-primary-color,#854fff);
+    --chat--color-secondary:var(--n8n-chat-secondary-color,#6b3fd4);
+    --chat--color-background:var(--n8n-chat-background-color,#ffffff);
+    --chat--color-font:var(--n8n-chat-font-color,#333333);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  }
+
+  /* ▼ container + layout fixes (1.1) */
+  .n8n-chat-widget .chat-container{
+    position:fixed;bottom:20px;right:20px;z-index:1000;
+    width:380px;height:600px;display:none;
+    background:var(--chat--color-background);border-radius:12px;
+    box-shadow:0 8px 32px rgba(133,79,255,.15);
+    border:1px solid rgba(133,79,255,.2);overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .n8n-chat-widget .chat-container.position-left{right:auto;left:20px}
+  .n8n-chat-widget .chat-container.open{display:flex}
+
+  /* ▼ centred header (1.2) */
+  .n8n-chat-widget .brand-header{position:relative;height:56px;border-bottom:1px solid rgba(133,79,255,.1);}
+  .n8n-chat-widget .brand-title{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    display:flex;align-items:center;gap:10px;
+  }
+  .n8n-chat-widget .brand-title img{
+    width:28px;height:28px;display:block;          /* remove inline-gap */
+  }
+  .n8n-chat-widget .brand-title span{font-size:18px;font-weight:500;color:var(--chat--color-font)}
+
+  .n8n-chat-widget .close-button{
+    position:absolute;right:16px;top:50%;transform:translateY(-50%);
+    background:none;border:none;font-size:22px;opacity:.6;cursor:pointer;
+  }
+  .n8n-chat-widget .close-button:hover{opacity:1}
+
+  /* ▼ flex layout so input bar never slides away (1.1) */
+  .n8n-chat-widget .chat-interface{display:none;flex-direction:column;flex:1;min-height:0}
+  .n8n-chat-widget .chat-interface.active{display:flex}
+  .n8n-chat-widget .chat-messages{flex:1;min-height:0;overflow-y:auto;padding:20px;display:flex;flex-direction:column;background:var(--chat--color-background)}
+
+  /* messages */
+  .n8n-chat-widget .chat-message{padding:12px 16px;margin:8px 0;border-radius:12px;max-width:80%;font-size:14px;line-height:1.5;word-wrap:break-word}
+  .n8n-chat-widget .chat-message.user{
+    align-self:flex-end;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);
+    color:#fff;box-shadow:0 4px 12px rgba(133,79,255,.2)
+  }
+  .n8n-chat-widget .chat-message.bot{
+    align-self:flex-start;background:var(--chat--color-background);
+    border:1px solid rgba(133,79,255,.2);color:var(--chat--color-font);
+    box-shadow:0 4px 12px rgba(0,0,0,.05)
+  }
+  /* Thinking... bubble (1.4) */
+  .n8n-chat-widget .chat-message.loading{opacity:.6;font-style:italic;animation:blink 1.4s infinite}
+  @keyframes blink{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}
+
+  /* input area */
+  .n8n-chat-widget .chat-input{display:flex;gap:8px;padding:16px;border-top:1px solid rgba(133,79,255,.1);background:var(--chat--color-background)}
+  .n8n-chat-widget .chat-input textarea{
+    flex:1;padding:12px;border:1px solid rgba(133,79,255,.2);border-radius:8px;
+    background:var(--chat--color-background);font-size:14px;color:var(--chat--color-font);resize:none
+  }
+  .n8n-chat-widget .chat-input button{
+    padding:0 20px;border:none;border-radius:8px;cursor:pointer;font-weight:500;
+    background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);
+    color:#fff;transition:transform .2s
+  }
+  .n8n-chat-widget .chat-input button:hover{transform:scale(1.05)}
+
+  /* toggle button */
+  .n8n-chat-widget .chat-toggle{
+    position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:30px;
+    background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);
+    color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(133,79,255,.3);
+    z-index:999;display:flex;align-items:center;justify-content:center;transition:transform .3s
+  }
+  .n8n-chat-widget .chat-toggle:hover{transform:scale(1.05)}
+
+  /* ——— NEW / OVERRIDES ——— */
+  /* welcome screen */
+  .n8n-chat-widget .welcome-text{
+    margin:0 0 20px 0;
+    font-size:20px;line-height:1.3;font-weight:600;
+    color:var(--chat--color-font);
+  }
+  .n8n-chat-widget .response-text{
+    margin:4px 0 0 0;
+    font-size:14px;line-height:1.4;opacity:.7;
+  }
+
+  /* cap width on very wide viewports */
+  @media (min-width:700px){
+    .n8n-chat-widget .chat-container{max-width:380px;}
+  }
+`;
 
   /* ---------- 2.  LOAD FONT & STYLES  ---------- */
   document.head.insertAdjacentHTML(

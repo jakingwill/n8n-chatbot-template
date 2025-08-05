@@ -282,12 +282,12 @@ textarea.addEventListener('keydown', e => {
   }
 });
 
-/* launcher (use toggleButton if that’s the variable you created) */
+/* launcher */
 toggleButton.addEventListener('click', () => {
   chatContainer.classList.toggle('open');
 });
 
-/* close buttons (all elements with class .close-button) */
+/* close buttons */
 chatContainer.querySelectorAll('.close-button').forEach(btn => {
   btn.addEventListener('click', () => {
     chatContainer.classList.remove('open');
@@ -299,10 +299,17 @@ if (cfg.behavior.autoOpen) {
   chatContainer.classList.add('open');
 }
 
+/* ---------- END OF initN8NChatWidget ---------- */
+}   // ← this closes the function!
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
 /* Auto-init after DOM ready */
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',initN8NChatWidget);
-}else{initN8NChatWidget();}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initN8NChatWidget);
+} else {
+  initN8NChatWidget();
+}
 
 /* Expose global */
-if(typeof window!=='undefined'){window.initN8NChatWidget=initN8NChatWidget;}
+if (typeof window !== 'undefined') {
+  window.initN8NChatWidget = initN8NChatWidget;

@@ -14,6 +14,13 @@
 /* 1 .  Widget initialiser */
 function initN8NChatWidget () {
 
+/* --- CLOSE IF IT ALREADY EXISTS --------------------------------------- */
+  const existing = document.querySelector('.n8n-chat-widget .chat-container');
+  if (existing) {                       // widget is already on the page
+    existing.classList.remove('open');  // ⬅︎ force it closed
+    return;                             // and skip the rest of the init
+  }
+   
 /* ---------- 1.  STYLES  ---------- */
 const styles = `
   /* Root */

@@ -214,16 +214,20 @@ root.innerHTML=`
 document.body.appendChild(root);
 
 /* ---------- 5.  DOM refs ---------- */
-const chatContainer=root.querySelector('.chat-container');
-const newConv=root.querySelector('.new-conversation');
-const chatUI=root.querySelector('.chat-interface');
-const messagesDiv=root.querySelector('.chat-messages');
-const textarea=root.querySelector('textarea');
-const sendBtn=root.querySelector('.chat-input button');
-const newChatBtn=root.querySelector('.new-chat-btn');
-const closeBtn=root.querySelector('.close-button');
-const toggle=root.querySelector('.chat-toggle');
-let sessionId='';
+const chatContainer = root.querySelector('.chat-container');
+const newConv       = root.querySelector('.new-conversation');
+const chatUI        = root.querySelector('.chat-interface');
+const messagesDiv   = root.querySelector('.chat-messages');
+const textarea      = root.querySelector('textarea');
+const sendBtn       = root.querySelector('.chat-input button');
+const newChatBtn    = root.querySelector('.new-chat-btn');
+const closeBtn      = root.querySelector('.close-button');
+const toggle        = root.querySelector('.chat-toggle');
+let   sessionId     = '';
+
+/* ✱ always launch minimised ✱ */
+chatContainer.classList.remove('open');
+
 
 /* ---------- 6.  HELPERS ---------- */
 const uuid=()=>crypto.randomUUID();
@@ -286,8 +290,6 @@ textarea.addEventListener('keydown', e => {
 toggle.addEventListener('click', () => {
   chatContainer.classList.toggle('open');
 });   // ✅ closes addEventListener
-
-/* ‼️  REMOVE the next stray }); here */
 
 /* close buttons */
 chatContainer.querySelectorAll('.close-button').forEach(btn => {

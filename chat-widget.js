@@ -141,46 +141,9 @@ const styles = `
   .n8n-chat-widget .chat-input button:hover{transform:scale(1.05)}
 
   /* Toggle */
-  .chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s;
-  padding: 0;
-  font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.chat-toggle:hover {
-  transform: scale(1.05);
-}
-
-.ask-ai-icon {
-  width: 28px;
-  height: auto;
-  display: block;
-}
-
-.chat-label {
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.2;
-  white-space: pre-line;
-  text-align: center;
-}
-
-
+  .n8n-chat-widget .chat-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:30px;background:linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+  .n8n-chat-widget .chat-toggle.position-left{right:auto;left:20px}
+  .n8n-chat-widget .chat-toggle:hover{transform:scale(1.05)}
 
    /* Footer */
   .n8n-chat-widget .chat-footer {
@@ -258,14 +221,9 @@ root.innerHTML=`
       </div>
     </div>
   </div>
-  <button class="chat-toggle">
-  <img
-    src="https://cdn.weweb.io/designs/8c9f22cb-87ee-4c8d-8204-39bde1a09bb3/sections/AskAI-removebg-preview.png?_wwcv=1754505130070"
-    alt="Ask AI"
-    class="ask-ai-icon"
-  />
-</button>
-`;
+  <button class="chat-toggle${cfg.style.position==='left'?' position-left':''}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 00-9.949 9.06A10 10 0 002 12c0 5.523 4.477 10 10 10a9.96 9.96 0 005.002-1.312L22 22l-1.312-4.998A9.96 9.96 0 0022 12c0-5.523-4.477-10-10-10Z"/></svg>
+  </button>`;
 document.body.appendChild(root);
 
 /* ---------- 5.  DOM refs ---------- */

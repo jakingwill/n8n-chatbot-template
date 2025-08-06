@@ -166,6 +166,12 @@ const styles = `
   transform: scale(1.05);
 }
 
+.ask-ai-icon {
+  width: 28px;
+  height: auto;
+  display: block;
+}
+
 .chat-label {
   font-size: 13px;
   font-weight: 600;
@@ -253,8 +259,13 @@ root.innerHTML=`
     </div>
   </div>
   <button class="chat-toggle">
-  <span class="chat-label">Ask<br>AI</span>
-</button>`;
+  <img
+    src="https://cdn.weweb.io/designs/8c9f22cb-87ee-4c8d-8204-39bde1a09bb3/sections/AskAI-removebg-preview.png?_wwcv=1754505130070"
+    alt="Ask AI"
+    class="ask-ai-icon"
+  />
+</button>
+`;
 document.body.appendChild(root);
 
 /* ---------- 5.  DOM refs ---------- */

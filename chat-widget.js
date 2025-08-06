@@ -148,7 +148,7 @@ const styles = `
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00c6a2 0%, #00a5a5 100%);
+  background: linear-gradient(135deg,var(--chat--color-primary)0%,var(--chat--color-secondary)100%);
   color: #ffffff;
   border: none;
   cursor: pointer;

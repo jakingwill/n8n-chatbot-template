@@ -148,27 +148,32 @@ const styles = `
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-  color: #fff;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  line-height: 1.2;
-  white-space: pre-line;
+  background: linear-gradient(135deg, #00c6a2 0%, #00a5a5 100%);
+  color: #ffffff;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
   transition: transform 0.3s;
+  padding: 0;
+  font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .chat-toggle:hover {
   transform: scale(1.05);
 }
+
+.chat-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: pre-line;
+  text-align: center;
+}
+
 
 
    /* Footer */
@@ -248,7 +253,7 @@ root.innerHTML=`
     </div>
   </div>
   <button class="chat-toggle">
-  Ask<br>AI
+  <span class="chat-label">Ask<br>AI</span>
 </button>`;
 document.body.appendChild(root);
 

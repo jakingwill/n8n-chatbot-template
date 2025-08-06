@@ -87,6 +87,12 @@ const styles = `
             color: var(--chat--color-font);
         }
 
+        .n8n-chat-widget .brand-title {
+            display:flex;
+            align-items:center;   
+            gap:12px;    
+      }
+
   /* Welcome */
   .n8n-chat-widget .new-conversation{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -172,7 +178,7 @@ document.head.insertAdjacentHTML(
 const styleTag=document.createElement('style');styleTag.textContent=styles;document.head.appendChild(styleTag);
 
 /* ---------- 3.  CONFIG MERGE ---------- */
-const defaults={ webhook:{url:'',route:''}, branding:{logo:'',name:'',welcomeText:'',responseTimeText:'',poweredBy:{text:'Got feedback?',link:'#'}}, metadata:{}, style:{primaryColor:'#854fff',secondaryColor:'#6b3fd4',position:'right',backgroundColor:'#ffffff',fontColor:'#333333'}, behavior:{autoOpen:false}};
+const defaults={ webhook:{url:'',route:''}, branding:{logo:'',name:'',welcomeText:'',responseTimeText:'',poweredBy:{text:"Anything you'd like us to improve?",link:'https://get.marking.ai/settings?source=chatassistant'}}, metadata:{}, style:{primaryColor:'#854fff',secondaryColor:'#6b3fd4',position:'right',backgroundColor:'#ffffff',fontColor:'#333333'}, behavior:{autoOpen:false}};
 const cfg={...defaults,...window.ChatWidgetConfig,
   webhook:{...defaults.webhook ,...(window.ChatWidgetConfig?.webhook ||{})},
   branding:{...defaults.branding,...(window.ChatWidgetConfig?.branding||{})},
